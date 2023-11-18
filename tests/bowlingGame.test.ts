@@ -26,4 +26,11 @@ describe("bowling game tests", () => {
     rollMany(17, 0);
     expect(game.score()).to.equal(16);
   });
+
+  it("single strike game", () => {
+    game.roll(10);
+    rollMany(2, 3)
+    rollMany(17, 0);
+    expect(game.score()).to.equal(22);
+  });
 });

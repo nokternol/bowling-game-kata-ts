@@ -1,20 +1,31 @@
+function isSpare([roll1, roll2]: [number, number]) {
+  return roll1 + roll2 === 10 && roll2 > 0;
+}
+function isStrike([roll1, roll2]: [number, number]) {
+  return roll1 === 10 && roll2 === 0;
+}
+
 export default class Game {
-  private scores = Array(21).fill(0);
+  private scores = Array<number>(21).fill(0);
   private currRoll = 0;
   score() {
     return this.scores.reduce((acc, score, index, scores) => {
-        const frameEnd = index % 2 !== 0;
-        if (!frameEnd) return acc;
+      const frameEnd = index % 2 !== 0;
+      if (!frameEnd) return acc;
 
-        let frameScore: number = score + scores[index-1];
-        if (frameScore === 10) {
-          if (score === 0) { //strike
-            frameScore += scores[index+1] + scores[index+2];
-          } else { //spare
-            frameScore += scores[index+1];
-          }
+      const frameScore = score + scores[index - 1];
+      let frameBonus = 0;
+      if (frameScore === 10) {
+        const frameScores: [number, number] = [scores[index - 1], score];
+        if (isStrike(frameScores)) {
+          frameBonus = scores[index + 1] + scores[index + 2];
+        } 
+        
+        if (isSpare(frameScores)) {
+          frameBonus = scores[index + 1];
         }
-        return acc+frameScore;
+      }
+      return acc + frameScore + frameBonus;
     }, 0);
   }
   roll(pins: number) {

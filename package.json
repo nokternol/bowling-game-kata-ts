@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/nokternol/bowling-game-kata-ts/issues"
   },
-  "homepage": "https://github.com/nokternol/bowling-game-kata-ts#readme"
+  "homepage": "https://github.com/nokternol/bowling-game-kata-ts#readme",
+  "devDependencies": {
+    "vitest": "0.34.6"
+  }
 }

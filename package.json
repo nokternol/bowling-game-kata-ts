@@ -4,7 +4,7 @@
   "description": "Learning by experimentation with agile design",
   "main": "index.js",
   "scripts": {
-    "test": "vitest"
+    "test": "vitest run"
   },
   "repository": {
     "type": "git",

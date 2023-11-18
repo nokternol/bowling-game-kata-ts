@@ -6,13 +6,17 @@ describe("bowling game tests", () => {
     game = new Game();
   });
 
+  function rollMany(times: number, pins: number) {
+    for (let i = 0; i < times; i++) game.roll(pins);
+  }
+
   it("gutter game", () => {
-    for (let i = 0; i < 20; i++) game.roll(0);
+    rollMany(20, 0);
     expect(game.score()).to.equal(0);
   });
-  
+
   it("single pin game", () => {
-    for (let i = 0; i < 20; i++) game.roll(1);
+    rollMany(20, 1);
     expect(game.score()).to.equal(20);
   });
 });

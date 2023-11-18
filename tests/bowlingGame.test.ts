@@ -9,6 +9,17 @@ describe("bowling game tests", () => {
   function rollMany(times: number, pins: number) {
     for (let i = 0; i < times; i++) game.roll(pins);
   }
+  const roll = {
+    a: {
+      spare: () => {
+        rollMany(2, 5);
+      },
+      strike: () => {
+        game.roll(10);
+        game.roll(0);
+      },
+    },
+  };
 
   it("gutter game", () => {
     rollMany(20, 0);
@@ -21,15 +32,14 @@ describe("bowling game tests", () => {
   });
 
   it("single spare game", () => {
-    rollMany(2, 5);
+    roll.a.spare();
     game.roll(3);
     rollMany(17, 0);
     expect(game.score()).to.equal(16);
   });
 
   it("single strike game", () => {
-    game.roll(10);
-    game.roll(0);
+    roll.a.strike();
     rollMany(2, 3)
     rollMany(17, 0);
     expect(game.score()).to.equal(22);

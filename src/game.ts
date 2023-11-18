@@ -3,18 +3,17 @@ export default class Game {
   private currRoll = 0;
   score() {
     return this.scores.reduce((acc, score, index, scores) => {
-        const frameEnd = index % 2 === 0;
-        let result:  number;
-        if (frameEnd) {
-            const isSpare = score + scores[index-1] === 10;
-            result = isSpare ? score + scores[index+1] : score;
-        } else {
-            result = score;
+        const frameEnd = index % 2 !== 0;
+        if (!frameEnd) return acc;
+
+        let frameScore: number = score + scores[index-1];
+        if (frameScore === 10) {
+            frameScore += scores[index+1];
         }
-        return acc+result;
+        return acc+frameScore;
     }, 0);
   }
   roll(pins: number) {
-    this.scores[++this.currRoll] = pins;
+    this.scores[this.currRoll++] = pins;
   }
 }

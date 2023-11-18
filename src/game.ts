@@ -8,7 +8,11 @@ export default class Game {
 
         let frameScore: number = score + scores[index-1];
         if (frameScore === 10) {
+          if (score === 0) { //strike
+            frameScore += scores[index+1] + scores[index+2];
+          } else { //spare
             frameScore += scores[index+1];
+          }
         }
         return acc+frameScore;
     }, 0);

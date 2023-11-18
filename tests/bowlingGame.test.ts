@@ -19,4 +19,12 @@ describe("bowling game tests", () => {
     rollMany(20, 1);
     expect(game.score()).to.equal(20);
   });
+
+  it("single spare game", () => {
+    game.roll(5);
+    game.roll(5);
+    game.roll(3);
+    rollMany(17, 0);
+    expect(game.score()).to.equal(16);
+  });
 });

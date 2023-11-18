@@ -4,6 +4,7 @@
   "description": "Learning by experimentation with agile design",
   "main": "index.js",
   "scripts": {
+    "tdd": "vitest",
     "test": "vitest run"
   },
   "repository": {

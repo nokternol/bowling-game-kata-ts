@@ -29,6 +29,7 @@ describe("bowling game tests", () => {
 
   it("single strike game", () => {
     game.roll(10);
+    game.roll(0);
     rollMany(2, 3)
     rollMany(17, 0);
     expect(game.score()).to.equal(22);

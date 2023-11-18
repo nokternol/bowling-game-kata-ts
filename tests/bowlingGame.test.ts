@@ -16,7 +16,6 @@ describe("bowling game tests", () => {
       },
       strike: () => {
         game.roll(10);
-        game.roll(0);
       },
     },
   };

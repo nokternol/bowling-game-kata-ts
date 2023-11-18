@@ -30,5 +30,8 @@ export default class Game {
   }
   roll(pins: number) {
     this.scores[this.currRoll++] = pins;
+    // If a strike was rolled and it's the first roll of ther frame, then skip a roll (except on the final frame)
+    if (pins === 10 && this.currRoll % 2 !== 0 && this.currRoll <= this.scores.length - 4)
+      this.currRoll++;
   }
 }
